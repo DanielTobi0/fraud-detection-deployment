@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import os
 from time import time
 
 import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from src.config import FEATURE_COLUMNS_PATH, MODEL_PATH, REFERENCE_STATS_PATH
@@ -12,6 +14,21 @@ from src.drift import DriftMonitor
 from src.features import align_feature_columns
 
 app = FastAPI(title="Fraud Detection API", version="0.1.0")
+
+allowed_origins = [
+    origin.strip()
+    for origin in os.getenv(
+        "ALLOWED_ORIGINS", "http://localhost:5173"
+    ).split(",")
+    if origin.strip()
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_methods=["POST", "GET", "OPTIONS"],
+    allow_headers=["Content-Type"],
+)
 
 
 class PredictRequest(BaseModel):
