@@ -1,11 +1,7 @@
 __pycache__/
 .ruff_cache/
-.venv/
-venv/
-env/
-.env/
-.env.*
-!.env.example
+.venv
+.env
 
 # Data and experiment artifacts
 data/raw/*.csv
@@ -13,9 +9,6 @@ data/processed/
 mlruns/
 
 # Python build/test cache
-build/
-dist/
-*.egg-info/
 .pytest_cache/
 .coverage
 htmlcov/
