@@ -1,48 +1,21 @@
-# Python-generated files
 __pycache__/
-*.py[oc]
-*.pyd
-*.so
-build/
-dist/
-wheels/
-*.egg-info
-
-# Virtual environments
+.ruff_cache/
 .venv/
 venv/
 env/
-
-# uv
-.uv/
-
-# Environment variables — never commit secrets
-.env
+.env/
 .env.*
 !.env.example
 
-# Data — large third-party dataset; download separately (see README)
+# Data and experiment artifacts
 data/raw/*.csv
 data/processed/
-
-# Trained model artifacts — reproducible via `python -m src.train`
-models/*.joblib
-
-# MLflow experiment tracking (local runs)
 mlruns/
 
-# Test / coverage
+# Python build/test cache
+build/
+dist/
+*.egg-info/
 .pytest_cache/
 .coverage
 htmlcov/
-coverage.xml
-
-# Editor
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
